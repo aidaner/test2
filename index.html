@@ -1,77 +1,458 @@
 
 <!DOCTYPE html>
-<!-- Copyright (c) 2013-19 XtraMath. All rights reserved.-->
-<html lang="en">
-  <head>
-    <title>XtraMath</title>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="msapplication-config" content="none">
-    <link rel="shortcut icon" type="image/x-icon" href="https://cdn0.xtramath.org/images/icons/favicon.ico">
-    <link rel="apple-touch-icon" href="https://cdn0.xtramath.org/images/icons/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="https://cdn0.xtramath.org/images/icons/apple-touch-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="https://cdn0.xtramath.org/images/icons/apple-touch-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="https://cdn0.xtramath.org/images/icons/apple-touch-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="https://cdn0.xtramath.org/images/icons/apple-touch-icon-180x180.png">
-    <link rel="alternate" hreflang="de" href="https://de.xtramath.org">
-    <link rel="alternate" hreflang="el" href="https://el.xtramath.org">
-    <link rel="alternate" hreflang="en" href="https://xtramath.org">
-    <link rel="alternate" hreflang="es" href="https://es.xtramath.org">
-    <link rel="alternate" hreflang="es-es" href="https://es-es.xtramath.org">
-    <link rel="alternate" hreflang="fr" href="https://fr.xtramath.org">
-    <link rel="alternate" hreflang="it" href="https://it.xtramath.org">
-    <link rel="alternate" hreflang="ja" href="https://ja.xtramath.org">
-    <link rel="alternate" hreflang="ko" href="https://ko.xtramath.org">
-    <link rel="alternate" hreflang="nl" href="https://nl.xtramath.org">
-    <link rel="alternate" hreflang="pt-br" href="https://pt-br.xtramath.org">
-    <link rel="alternate" hreflang="ru" href="https://ru.xtramath.org">
-    <meta name="og:title" content="XtraMath - 10 minutes a day for math fact fluency">
-    <meta name="description" content="XtraMath is a free program that helps students master addition, subtraction, multiplication, and division facts.">
-    <meta property="og:description" content="XtraMath is a free program that helps students master addition, subtraction, multiplication, and division facts.">
-    <meta property="og:image" content="https://cdn0.xtramath.org/ogp-graphic-300x300.png">
-    <meta name="viewport" content="initial-scale=1, width=device-width">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' *.xtramath.org; script-src 'self' cdn0.xtramath.org 'unsafe-eval'; style-src 'self' cdn0.xtramath.org 'unsafe-inline'; media-src cdn0.xtramath.org; img-src 'self' cdn0.xtramath.org data:">
-    <link rel="stylesheet" type="text/css" media="all" href="https://cdn0.xtramath.org/stylesheets/style-5933b9b.css">
-  </head>
-  <!-- Copyright (c) 2016-19 XtraMath. All rights reserved.-->
-  <!-- LATER: get these snippets out of JS rather than rendering them and showing them conditionally?-->
-  <body>
-    <div class="ui-page ui-page-active woodgrain home" id="stubLoader" style="height: 100%">
-        <div class="webHeaderBg"></div>
-        <div class="webHeader xm-header" data-update-page-padding="false"><a class="logoContainer" href="#/home/index"><img class="logo" src="https://cdn0.xtramath.org/images/en/logo-white.svg"></a>
-          <div class="nav">
-          </div>
-        </div>
-      <div id="stubSpinner" style="display: none;"><img src="https://cdn0.xtramath.org/images/spinner.gif"></div>
-      <noscript>
-        <div class="containingPaper" style="height: auto;">
-          <h1>JavaScript disabled</h1>
-          <p>Please enable JavaScript to use XtraMath.</p>
-        </div>
-      </noscript>
-      <div id="stubProgress" style="display: none;">
-        <div id="scriptsProgress"><span>Loading scripts -&nbsp;</span><span id="scriptsPercentage">0</span><span>%</span></div>
-        <div id="pagesProgress"><span>Loading pages -&nbsp;</span><span id="pagesPercentage">0</span><span>%</span></div>
-      </div>
-      <div class="containingPaper" id="stubErrorContainer" style="display: none; height: auto;">
-        <h1 class="offline" style="display: none;">Disconnected</h1>
-        <h1 class="connectionFailed" style="display: none;">Unable to connect</h1>
-        <h1 class="loadFailed" style="display: none;">Client load failed</h1>
-        <p><span class="offline" style="display: none;">You are not connected to the Internet. Please connect and <a class="reload" style="cursor: pointer;">refresh</a> this page.</span><span class="connectionFailed" style="display: none;">Cannot connect to xtramath.org. You may not be connected to the Internet. Ensure that you are connected by browsing to other websites, then return here and refresh this page. If you are able to reach other websites, but unable to connect to XtraMath, email <a href="mailto:erika@xtramath.org">erika@xtramath.org</a>. Please paste the following information into your message.</span><span class="loadFailed" style="display: none;">Could not load the XtraMath client. Please <a class="reload" style="cursor: pointer;">refresh</a> this page. If you continue to experience difficulties, email <a href="mailto:erika@xtramath.org">erika@xtramath.org</a>. Paste the following information into your message.</span></p>
-        <div id="supportInfo" style="display: none;">
-          <div id="clientError" style="display: none;">
-            <pre>Error details:</pre>
-            <pre id="stubError">{{reason}}</pre>
-          </div>
-          <div id="xhrError" style="display: none;">
-            <pre>XHR details:</pre>
-            <pre id="xhrStatus">{{status}}</pre>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- - NOTE: script tags at the end of body so they don't block loading of stub image elements on slow connections.-->
-    <script src="https://cdn0.xtramath.org/javascripts/config-9b74216.js"></script>
-    <script src="https://cdn0.xtramath.org/javascripts/stub-loader-a34d599.js"></script>
-  </body>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Elmwood 5th Grade Team</title>
+<meta name="title" content="Elmwood 5th Grade Team" />
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<meta property="og:url" content="https://www.elmwood5thgradeteam.com/" />
+<meta property="og:title" content="Elmwood 5th Grade Team" />
+<meta property="og:description" content="" />
+<meta property="og:site_name" content="Elmwood 5th Grade Team" />
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Chewy:regular" /><link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Architects+Daughter:regular" /><style type="text/css">
+.w-font-georgia { font-family: 'Georgia', serif !important; }
+.w-font-chewy { font-family: 'Chewy', sans-serif !important; }
+.w-font-tahoma { font-family: 'Tahoma', sans-serif !important; }
+.w-font-architects_daughter { font-family: 'Architects Daughter', cursive !important; }
+</style>
+<script>
+webs = window.webs || {};
+webs.locale = "en-US";
+webs.props = {
+	globalAssetBaseURL: "https://static.websimages.com/v0d18125",
+	staticServer: "https://static.websimages.com",
+	membersServer: "https://members.webs.com",
+	dynamicAssetServer: "https://dynamic.websimages.com",
+	modulesVersion: "v0d18125",
+	environment: "production",
+	imageProcessorServer: "https://mediaprocessor.websimages.com",
+	thumbServer: "https://thumbs.webs.com"
+};
+webs.theme = {"slug":"sb2_colourise","name":"Colourise","premium":false,"mobile":false,"translate":false,"customizable":true,"moduleStyles":{"email_list":{"sb2_default":{"global":{"css":"css\/email_list.less"},"inherit":"default","default":true}},"contact_form":{"sb2_default":{"global":{"css":"css\/contact_form.less"},"inherit":"default","default":true}},"button":{"sb2_default":{"global":{},"inherit":"default","default":true}}}};
+webs.theme.style = {"name":"Colourise Black","slug":"black","swatchColor":"#070707","thumb":"thumbs\/black.jpg","css":"assets\/black\/black.less"};
+webs.theme.url = 'https://dynamic.websimages.com/s/themes/sb2_colourise/v1.68';
+webs.theme.variables = {"footText":{"lineHeight":10,"linkColor":"#006193","area":"Footer","color":"#898989","font":"verdana","hidden":false,"align":null,"name":"Text","slug":"footText","type":"text","hoverColor":"#898989","size":10},"title":{"lineHeight":28,"linkColor":"#006193","area":"Body","color":"#ffffff","font":"tahoma","hidden":false,"align":null,"name":"Titles","slug":"title","type":"text","hoverColor":"#ffffff","size":24},"text":{"lineHeight":20,"linkColor":"#006193","area":"Body","color":"#999999","font":"chewy","hidden":false,"align":null,"name":"Text","slug":"text","type":"text","hoverColor":"#999999","size":18},"header_subtitle":{"area":"Global","color":null,"font":"georgia","hidden":true,"align":null,"name":null,"slug":"header_subtitle","type":"font"},"sideTitle":{"lineHeight":21,"linkColor":"#ffffff","area":"Side Bar","color":"#ffffff","font":"tahoma","hidden":false,"align":null,"name":"Titles","slug":"sideTitle","type":"text","hoverColor":"#ffffff","size":24},"theme":{"area":"Global","color":"#84eb1d","hidden":false,"align":null,"name":"Accent","slug":"theme","type":"color"},"header_title":{"area":"Global","color":null,"font":"georgia","hidden":true,"align":null,"name":null,"slug":"header_title","type":"font"},"bg":{"area":"Global","pattern":null,"color":"#070707","texture":null,"hidden":false,"align":null,"name":null,"image":{"position":"0% 0%","fileId":null,"path":null,"attachment":"scroll","repeat":"repeat","size":null},"slug":"bg","type":"background"},"sideText":{"lineHeight":19,"linkColor":"#006193","area":"Side Bar","color":"#999999","font":"verdana","hidden":false,"align":null,"name":"Text","slug":"sideText","type":"text","hoverColor":"#999999","size":18}};
+webs.site = {
+	url: "https://www.elmwood5thgradeteam.com/",
+	id: 126529480,
+	premium: true
+};
+webs.locale = 'en-US';
+webs.renderedModulesPromises = [];
+</script>
+<script src="https://static.websimages.com/active-static/lib/modernizr-old.js"></script>
+<script src="https://static.websimages.com/static/global/js/require.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+<script src="https://static.websimages.com/active-static/target/apps/bootstrap.js"></script>
+<script>define('moduleVersions', function(){return {"mobile_link":"1.10","mobile_email":"1.7","zumba_membership":"1.17","photo_gallery_slideshow":"1.23","zumba-membership":"1.1","zumba-licenses":"1.1","zumba_footer":"1.22","slideshow":"1.32","button":"1.16","text_image":"1.13","horizontal_rule":"1.15","video":"1.28","follow":"1.14","spacer":"1.8","text":"1.19","webstore_products":"1.19","mobile_text":"1.9","menu":"1.5","image":"1.28","team":"1.5","table":"1.21","mobile_location":"1.10","photo_gallery":"1.74","stacked_item":"1.9","fb-comments":"1.10","mobile_social":"1.10","zumba_qualifications":"1.11","zumba_shop":"1.10","zumba-contact":"1.1","contact_form":"1.38","google_map":"1.28","seo_footer":"1.15","timeline":"1.6","sb2_paragraph":"1.15","zumba_contact":"1.15","contact":"1.6","social-links":"1.23","share_button":"1.11","fb-like":"1.24","zumba-qualifications":"1.1","title":"1.18","mobile_phone":"1.6","quote":"1.3","carousel":"1.39","donate":"1.11","twitter-feed":"1.19","ads":"1.6","email_list":"1.19","icon":"1.3","buckets":"1.20","audio":"1.16","header_editor":"1.55","paypal":"1.11","google_checkout":"1.8","footer":"1.10","zumba-footer":"1.1","zumba_calendar":"1.21","html":"1.17","zumba_licenses":"1.11","widget_bank":"1.8","mobile_hours":"1.10"};});</script>
+<link id="webs-theme-css" rel="stylesheet" type="text/css" href="//www.elmwood5thgradeteam.com/.theme.css?pubDate=191216093313" /><link rel="stylesheet" type="text/css" href="https://static.websimages.com/v0d18125/static/projects/finch/css/sitebase.css" /><script src="https://www.google.com/recaptcha/api.js" async defer></script><script src="https://static.websimages.com/v0d18125/active-static/target/internal/sitebuilder/view/view.app.js"></script>
+<meta name="fw:category" content="0">
+<script type="text/javascript">var _gaq=_gaq||[];_gaq.push(['_setDomainName','none']);_gaq.push(['_setAllowHash',false]);_gaq.push(['_setAllowLinker',true]);_gaq.push(['_setAccount','UA-230305-2']);_gaq.push(['_trackPageview']);</script>
+</head>
+<body class='hasOneColumn noSidebar navtype-Top'>
+<div id="fw-container">
+<div id="fw-head">
+<div class="webs-content webs-header" data-role="webs-header" data-webs-module="header_editor" data-webs-locked="true" id="537e56600cf20d2f546ca022"><div class="webs-parent webs-parent-0"><div class="webs-parent webs-parent-1 webs-col"><style type="text/css">#webs-bin-537e56600cf20d2f546ca023 .w-header-area-custom {
+  width: 100%;
+}
+#webs-bin-537e56600cf20d2f546ca023 .title {
+  top: 129.984375px;
+  z-index: 20;
+  display: block;
+}
+#webs-bin-537e56600cf20d2f546ca023 .subtitle {
+  top: 126px;
+  z-index: 21;
+  display: none;
+}
+#webs-bin-537e56600cf20d2f546ca023 .w-header-layer-align-left.title,
+#webs-bin-537e56600cf20d2f546ca023 .w-header-layer-align-center.title {
+  left: 96.5px;
+}
+#webs-bin-537e56600cf20d2f546ca023 .w-header-layer-align-left.subtitle,
+#webs-bin-537e56600cf20d2f546ca023 .w-header-layer-align-center.subtitle {
+  left: -239px;
+}
+#webs-bin-537e56600cf20d2f546ca023 .w-header-layer-align-left.w-header-layer-centered,
+#webs-bin-537e56600cf20d2f546ca023 .w-header-layer-align-center.w-header-layer-centered {
+  right: auto;
+  left: 50%;
+}
+#webs-bin-537e56600cf20d2f546ca023 .w-header-layer-align-right.title {
+  right: 0px;
+}
+#webs-bin-537e56600cf20d2f546ca023 .w-header-layer-align-right.subtitle {
+  right: 0px;
+}
+#webs-bin-537e56600cf20d2f546ca023 .logo {
+  top: 16px;
+  width: 74px;
+  left: 16px;
+  height: 73px;
+  display: none;
+}
+#webs-bin-537e56600cf20d2f546ca023 .background {
+  background-image: url('');
+  background-position: 0px 0px;
+}
+</style>
+<div class="webs-bin" id="webs-bin-537e56600cf20d2f546ca023">
+<div class="webs-bin-wrap">
+<div class="webs-container webs-module-header_editor  w-header_editor-default">
+<div class="w-header-area ">
+
+<div id="" class="title w-header-layer w-header-layer-text w-header-layer-align-center ">
+<div class="w-header-layer-container">
+<h1 class="w-header-text-container">
+<div class="w-header-text w-header-title ">
+<span style="color: rgb(255, 255, 255); font-size: 72px;">Elmwood 5th Grade</span>
+</div>
+</h1>
+</div>
+</div>
+<div id="" class="subtitle w-header-layer w-header-layer-text w-header-layer-align-center ">
+<div class="w-header-layer-container">
+<h2 class="w-header-text-container">
+<div class="w-header-text w-header-subtitle " data-placeholder="Subtitle">
+<span style="color: rgb(87, 205, 199);">Congratulations to our 5th Grade&nbsp;Quiz Bowl Team Members</span><div><br></div><div><span style="color: rgb(234, 162, 30);"><span style="font-size: 14px; color: rgb(204, 255, 0);">Practices on </span><span style="font-size: 14px; color: rgb(204, 255, 0);">Monday's</span><span style="font-size: 14px; color: rgb(204, 255, 0);"> and Wednesday's&nbsp;</span></span></div><div><span style="color: rgb(234, 162, 30);"><span style="font-size: 14px; color: rgb(204, 255, 0);">2:50 - 3:30 in the MS media center</span></span></div>
+</div>
+</h2>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+			require(['jquery'], function($){
+				var deferredLoad = $.Deferred();
+				webs.renderedModulesPromises.push(deferredLoad.promise());
+				require(['internal/sitebuilder/common/ModuleClassLoader'], function(mcl){
+					mcl.create('header_editor', {data: {"width":"100%","linksData":{},"text_layers":[],"image_layers":[],"showBackground":false,"background":{"url":"","position":{"left":0,"top":0},"mobile":{"custom":false,"color":null}},"title":{"text":"<span style=\"color: rgb(255, 255, 255); font-size: 72px;\">Elmwood 5th Grade<\/span>","top":129.984375,"left":96.5,"right":"auto","align":"center","z-index":20,"display":"block","mobile":{"display":"block","top":18,"left":null,"color":null}},"subtitle":{"text":"<span style=\"color: rgb(87, 205, 199);\">Congratulations to our 5th Grade&nbsp;Quiz Bowl Team Members<\/span><div><br><\/div><div><span style=\"color: rgb(234, 162, 30);\"><span style=\"font-size: 14px; color: rgb(204, 255, 0);\">Practices on <\/span><span style=\"font-size: 14px; color: rgb(204, 255, 0);\">Monday's<\/span><span style=\"font-size: 14px; color: rgb(204, 255, 0);\"> and Wednesday's&nbsp;<\/span><\/span><\/div><div><span style=\"color: rgb(234, 162, 30);\"><span style=\"font-size: 14px; color: rgb(204, 255, 0);\">2:50 - 3:30 in the MS media center<\/span><\/span><\/div>","top":126,"left":-239,"right":"auto","align":"center","z-index":21,"display":"none","mobile":{"display":"none","top":40,"left":null,"color":null}},"logo":{"top":16,"left":16,"display":"none","width":74,"height":73,"mobile":{"display":"none","top":10,"left":null,"color":null},"position":"absolute"},"_id":"537e56600cf20d2f546ca023","_captchaPublicKey":"6Le3aDEUAAAAAMNRsdkVVxpJA05exOZVTuLEqM5u","_renderCaptcha":true,"_site":{"id":126529480}}, container: $('#webs-bin-537e56600cf20d2f546ca023 > .webs-bin-wrap > .webs-container')}).done(function(m){
+						m.oneLoaded();
+						deferredLoad.resolve();
+					});
+				});
+			});
+		</script>
+</div></div></div>
+<div id="logo-div" class="fw-logo"></div>
+</div>
+<div id="fw-blockContainer">
+<div id="fw-mainnavwrap">
+<div id="fw-nav-menu">
+<span id='translatedMore' style='display:none; top: -9999px !important; left: -9999px !important;'>More</span>
+<ul id="webs-nav" class="webs-nav">
+<li class="webs-home active fw-class-106a6c241b8797f52e1e77317b96a201"><a href="https://www.elmwood5thgradeteam.com/" title="Home"><span class="title">Home</span><span class="after"></span></a></li>
+<li class="fw-class-1658f7f069a5f7461736e847f22a8ce9"><a href="https://www.elmwood5thgradeteam.com/homework" title="Homework"><span class="title">Homework</span><span class="after"></span></a></li>
+<li class="fw-class-75a1b68634a8f5a1f9f77d944d00744e"><a href="https://www.elmwood5thgradeteam.com/mrs-kuehne" title="Mrs. Kuehne"><span class="title">Mrs. Kuehne</span><span class="after"></span></a></li>
+<li class="fw-class-9590d32d234fca5be19837aca9542b77"><a href="https://www.elmwood5thgradeteam.com/mrs-peery" title="Mrs. Peery"><span class="title">Mrs. Peery</span><span class="after"></span></a></li>
+<li class="fw-class-5c8d484ce34fad105251d42ad8d18d1b"><a href="https://www.elmwood5thgradeteam.com/mrs-arnold" title="Mrs. Arnold"><span class="title">Mrs. Arnold</span><span class="after"></span></a></li>
+<li class="fw-class-d5c549ce6e3c9dc75559b21460bda042"><a href="https://www.elmwood5thgradeteam.com/mrs-chapman" title="Mrs. Chapman"><span class="title">Mrs. Chapman</span><span class="after"></span></a></li>
+<li class="fw-class-fbf67fa6528712f9087ed1936b6fcd71"><a href="https://www.elmwood5thgradeteam.com/mrs-genson" title="Mrs. Genson"><span class="title">Mrs. Genson</span><span class="after"></span></a></li>
+<li class="fw-class-bfb2b21576b4c72336ef697ae23ea8a9"><a href="https://www.elmwood5thgradeteam.com/camp-heartland" title="Camp Heartland"><span class="title">Camp Heartland</span><span class="after"></span></a></li>
+</ul>
+</div>
+</div>
+<div id="fw-bigcontain">
+<div id="fw-columnContainer">
+<div id="fw-mainColumn">
+<section class="webs-content webs-body" data-role="webs-body" id="537e56600cf20d2f546ca028"><div class="webs-parent webs-parent-0"><div class="webs-parent webs-parent-1 webs-col">
+<div class="webs-bin" id="webs-bin-5d56ff661739bb5b26a37cfa">
+<div class="webs-bin-wrap">
+<div class="webs-container webs-module-title  w-title-default">
+<h3 class="webs-title webs-title-align-center ">
+<div class="w-text w-font-architects_daughter"><span style="font-size: 48px;" class="wz-bold"><span style="color: rgb(44, 161, 182);">Welcome to 5th grade!</span></span><span style="color: rgb(44, 161, 182);">&nbsp;</span></div>
+</h3>
+</div>
+</div>
+</div>
+<script>
+			require(['jquery'], function($){
+				var deferredLoad = $.Deferred();
+				webs.renderedModulesPromises.push(deferredLoad.promise());
+				require(['internal/sitebuilder/common/ModuleClassLoader'], function(mcl){
+					mcl.create('title', {data: {"align":"center","html":"<span style=\"font-size: 48px;\" class=\"wz-bold\"><span style=\"color: rgb(44, 161, 182);\">Welcome to 5th grade!<\/span><\/span><span style=\"color: rgb(44, 161, 182);\">&nbsp;<\/span>","level":null,"icon":{"enable":false,"set":null,"slug":null,"position":null,"style":null},"font":"architects_daughter","linksData":{},"_id":"5d56ff661739bb5b26a37cfa","_captchaPublicKey":"6Le3aDEUAAAAAMNRsdkVVxpJA05exOZVTuLEqM5u","_renderCaptcha":true,"_site":{"id":126529480}}, container: $('#webs-bin-5d56ff661739bb5b26a37cfa > .webs-bin-wrap > .webs-container')}).done(function(m){
+						m.oneLoaded();
+						deferredLoad.resolve();
+					});
+				});
+			});
+		</script>
+<div class="webs-bin" id="webs-bin-5b819dedd8b6aa0001beb950">
+<div class="webs-bin-wrap">
+<div class="webs-container webs-module-image  w-image-default">
+<div class="webs-frame webs-align-center webs-frame-default" style=""><div class="webs-frame-container">
+<div class="webs-image-wrapper-1 webs-hasframe webs-align-center" style="width:395px;height:527px;">
+<div class="webs-image-crop ">
+<img style="height:527px;" src="https://mediaprocessor.websimages.com/width/395/crop/0,0,395x527/www.elmwood5thgradeteam.com/IMG_6791.jpg">
+</div>
+</div>
+</div></div>
+</div>
+</div>
+</div>
+<script>
+			require(['jquery'], function($){
+				var deferredLoad = $.Deferred();
+				webs.renderedModulesPromises.push(deferredLoad.promise());
+				require(['internal/sitebuilder/common/ModuleClassLoader'], function(mcl){
+					mcl.create('image', {data: {"link":null,"imageType":"webs","width":395,"height":527,"align":"center","imageWidth":100,"caption":"image","inBucket":false,"changeCallback":null,"frame":"default","frameColor":"ffffff","top":0,"left":0,"imageHeight":527,"url":"https://www.elmwood5thgradeteam.com/IMG_6791.jpg","topOffset":0,"leftOffset":0,"rotate":0,"webs":{"fileId":457537641,"path":"IMG_6791.jpg"},"_id":"5b819dedd8b6aa0001beb950","_captchaPublicKey":"6Le3aDEUAAAAAMNRsdkVVxpJA05exOZVTuLEqM5u","_renderCaptcha":true,"_site":{"id":126529480}}, container: $('#webs-bin-5b819dedd8b6aa0001beb950 > .webs-bin-wrap > .webs-container')}).done(function(m){
+						m.oneLoaded();
+						deferredLoad.resolve();
+					});
+				});
+			});
+		</script>
+<div class="webs-bin" id="webs-bin-5432be7dd3c6bd194c263500">
+<div class="webs-bin-wrap">
+<div class="webs-container webs-module-title  w-title-default">
+<h3 class="webs-title webs-title-align-center ">
+<div class="w-text "><span style="color: rgb(255, 102, 0);"><span class="wz-bold  "><span class="wz-bold " style="font-size: 35px;"><span class="wz-bold " style="font-size: 24px;">Please email us with any questions or concerns using the below links</span><span class="wz-bold " style="font-size: 24px;">:</span></span></span></span></div>
+</h3>
+</div>
+</div>
+</div>
+<script>
+			require(['jquery'], function($){
+				var deferredLoad = $.Deferred();
+				webs.renderedModulesPromises.push(deferredLoad.promise());
+				require(['internal/sitebuilder/common/ModuleClassLoader'], function(mcl){
+					mcl.create('title', {data: {"align":"center","html":"<span style=\"color: rgb(255, 102, 0);\"><span class=\"wz-bold  \"><span class=\"wz-bold \" style=\"font-size: 35px;\"><span class=\"wz-bold \" style=\"font-size: 24px;\">Please email us with any questions or concerns using the below links<\/span><span class=\"wz-bold \" style=\"font-size: 24px;\">:<\/span><\/span><\/span><\/span>","level":null,"icon":{"enable":false,"set":null,"slug":null,"position":null,"style":null},"linksData":{},"_id":"5432be7dd3c6bd194c263500","_captchaPublicKey":"6Le3aDEUAAAAAMNRsdkVVxpJA05exOZVTuLEqM5u","_renderCaptcha":true,"_site":{"id":126529480}}, container: $('#webs-bin-5432be7dd3c6bd194c263500 > .webs-bin-wrap > .webs-container')}).done(function(m){
+						m.oneLoaded();
+						deferredLoad.resolve();
+					});
+				});
+			});
+		</script>
+<div class="webs-parent webs-parent-2 webs-row"><div class="webs-parent webs-parent-3 webs-col" style="width: 280px;">
+<div class="webs-bin" id="webs-bin-5641fc4a1e9c6fd67a00333f">
+<div class="webs-bin-wrap">
+<div class="webs-container webs-module-button  w-button-sb2_default w-button-default">
+<div class="w-button-container webs-align-left">
+<div class="w-button-align webs-align-left">
+<a class="w-button " style="background-color: #2a8fbd" href="mailto:arnom@elmls.net">
+<div class="w-button-inner">
+<div class="w-button-text-wrapper">
+<div class="w-button-text"><span style="color: rgb(0, 0, 0);" class="wz-bold"><span style="color: rgb(0, 0, 0); font-size: 24px;" class="wz-bold">Mrs. Arnold</span></span></div>
+</div>
+</div>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+			require(['jquery'], function($){
+				var deferredLoad = $.Deferred();
+				webs.renderedModulesPromises.push(deferredLoad.promise());
+				require(['internal/sitebuilder/common/ModuleClassLoader'], function(mcl){
+					mcl.create('button', {data: {"html":"<span style=\"color: rgb(0, 0, 0);\" class=\"wz-bold\"><span style=\"color: rgb(0, 0, 0); font-size: 24px;\" class=\"wz-bold\">Mrs. Arnold<\/span><\/span>","link":null,"bgcolor":"#2a8fbd","align":"left","linkInfo":{"linkType":"website","linkUrl":null,"newWindow":false,"tab":"email","email":"arnom@elmls.net"},"icon":{"enable":false,"set":null,"slug":null,"position":"left","style":null},"_id":"5641fc4a1e9c6fd67a00333f","_captchaPublicKey":"6Le3aDEUAAAAAMNRsdkVVxpJA05exOZVTuLEqM5u","_renderCaptcha":true,"_site":{"id":126529480}}, container: $('#webs-bin-5641fc4a1e9c6fd67a00333f > .webs-bin-wrap > .webs-container')}).done(function(m){
+						m.oneLoaded();
+						deferredLoad.resolve();
+					});
+				});
+			});
+		</script>
+<div class="webs-bin" id="webs-bin-5432bea2d3c6bd194c26351b">
+<div class="webs-bin-wrap">
+<div class="webs-container webs-module-button  w-button-sb2_default w-button-default">
+<div class="w-button-container webs-align-left">
+<div class="w-button-align webs-align-left">
+<a class="w-button " style="background-color: #2a8fbd" href="mailto:chapm@elmls.net">
+<div class="w-button-inner">
+<div class="w-button-text-wrapper">
+<div class="w-button-text"><span style="font-size: 24px;" class="wz-bold"><span style="color: rgb(0, 0, 0); font-size: 24px;" class="wz-bold">Mrs. Chapman</span></span></div>
+</div>
+</div>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+			require(['jquery'], function($){
+				var deferredLoad = $.Deferred();
+				webs.renderedModulesPromises.push(deferredLoad.promise());
+				require(['internal/sitebuilder/common/ModuleClassLoader'], function(mcl){
+					mcl.create('button', {data: {"html":"<span style=\"font-size: 24px;\" class=\"wz-bold\"><span style=\"color: rgb(0, 0, 0); font-size: 24px;\" class=\"wz-bold\">Mrs. Chapman<\/span><\/span>","link":null,"bgcolor":"#2a8fbd","align":"left","linkInfo":{"linkType":"website","linkUrl":null,"newWindow":false,"tab":"email","email":"chapm@elmls.net"},"icon":{"enable":false,"set":null,"slug":null,"position":"left","style":null},"_id":"5432bea2d3c6bd194c26351b","_captchaPublicKey":"6Le3aDEUAAAAAMNRsdkVVxpJA05exOZVTuLEqM5u","_renderCaptcha":true,"_site":{"id":126529480}}, container: $('#webs-bin-5432bea2d3c6bd194c26351b > .webs-bin-wrap > .webs-container')}).done(function(m){
+						m.oneLoaded();
+						deferredLoad.resolve();
+					});
+				});
+			});
+		</script>
+</div><div class="webs-parent webs-parent-3 webs-col" style="width: 570px;"><div class="webs-parent webs-parent-4 webs-row"><div class="webs-parent webs-parent-5 webs-col" style="width: 353px;">
+<div class="webs-bin" id="webs-bin-5432be9bd3c6bd194c263517">
+<div class="webs-bin-wrap">
+<div class="webs-container webs-module-button  w-button-sb2_default w-button-default">
+<div class="w-button-container webs-align-center">
+<div class="w-button-align webs-align-center">
+<a class="w-button " style="background-color: #2a8fbd" href="mailto:peerr@elmls.net">
+<div class="w-button-inner">
+<div class="w-button-text-wrapper">
+<div class="w-button-text"><span style="color: rgb(0, 0, 0);" class="wz-bold"><span style="font-size: 24px; color: rgb(0, 0, 0);" class="wz-bold">Mrs. Peery</span></span></div>
+</div>
+</div>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+			require(['jquery'], function($){
+				var deferredLoad = $.Deferred();
+				webs.renderedModulesPromises.push(deferredLoad.promise());
+				require(['internal/sitebuilder/common/ModuleClassLoader'], function(mcl){
+					mcl.create('button', {data: {"html":"<span style=\"color: rgb(0, 0, 0);\" class=\"wz-bold\"><span style=\"font-size: 24px; color: rgb(0, 0, 0);\" class=\"wz-bold\">Mrs. Peery<\/span><\/span>","link":null,"bgcolor":"#2a8fbd","align":"center","linkInfo":{"linkType":"website","linkUrl":null,"newWindow":false,"tab":"email","email":"peerr@elmls.net"},"icon":{"enable":false,"set":null,"slug":null,"position":"left","style":null},"_id":"5432be9bd3c6bd194c263517","_captchaPublicKey":"6Le3aDEUAAAAAMNRsdkVVxpJA05exOZVTuLEqM5u","_renderCaptcha":true,"_site":{"id":126529480}}, container: $('#webs-bin-5432be9bd3c6bd194c263517 > .webs-bin-wrap > .webs-container')}).done(function(m){
+						m.oneLoaded();
+						deferredLoad.resolve();
+					});
+				});
+			});
+		</script>
+</div><div class="webs-parent webs-parent-5 webs-col" style="width: 217px;">
+<div class="webs-bin" id="webs-bin-5432be97d3c6bd194c263515">
+<div class="webs-bin-wrap">
+<div class="webs-container webs-module-button  w-button-sb2_default w-button-default">
+<div class="w-button-container webs-align-center">
+<div class="w-button-align webs-align-center">
+<a class="w-button " style="background-color: #2a8fbd" href="mailto:kueha@elmls.net">
+<div class="w-button-inner">
+<div class="w-button-text-wrapper">
+<div class="w-button-text"><p><span class="wz-bold" style="color: rgb(42, 143, 189);"><span class="wz-bold" style="color: rgb(0, 0, 0); font-size: 24px;">Mrs. Kuehne</span></span></p></div>
+</div>
+</div>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+			require(['jquery'], function($){
+				var deferredLoad = $.Deferred();
+				webs.renderedModulesPromises.push(deferredLoad.promise());
+				require(['internal/sitebuilder/common/ModuleClassLoader'], function(mcl){
+					mcl.create('button', {data: {"html":"<p><span class=\"wz-bold\" style=\"color: rgb(42, 143, 189);\"><span class=\"wz-bold\" style=\"color: rgb(0, 0, 0); font-size: 24px;\">Mrs. Kuehne<\/span><\/span><\/p>","link":null,"bgcolor":"#2a8fbd","align":"center","linkInfo":{"linkType":"website","linkUrl":null,"newWindow":false,"tab":"email","email":"kueha@elmls.net"},"icon":{"enable":false,"set":null,"slug":null,"position":"left","style":null},"_id":"5432be97d3c6bd194c263515","_captchaPublicKey":"6Le3aDEUAAAAAMNRsdkVVxpJA05exOZVTuLEqM5u","_renderCaptcha":true,"_site":{"id":126529480}}, container: $('#webs-bin-5432be97d3c6bd194c263515 > .webs-bin-wrap > .webs-container')}).done(function(m){
+						m.oneLoaded();
+						deferredLoad.resolve();
+					});
+				});
+			});
+		</script>
+</div></div><div class="webs-parent webs-parent-4 webs-row"><div class="webs-parent webs-parent-5 webs-col" style="width: 376px;">
+<div class="webs-bin" id="webs-bin-55d5fcf9b4ed7b513502e66c">
+<div class="webs-bin-wrap">
+<div class="webs-container webs-module-button  w-button-sb2_default w-button-default">
+<div class="w-button-container webs-align-center">
+<div class="w-button-align webs-align-center">
+<a class="w-button " style="background-color: #2a8fbd" href="mailto:gensn@elmls.net">
+<div class="w-button-inner">
+<div class="w-button-text-wrapper">
+<div class="w-button-text"><span style="color: rgb(0, 0, 0); font-size: 24px;" class="wz-bold">Mrs. Genson</span></div>
+</div>
+</div>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+			require(['jquery'], function($){
+				var deferredLoad = $.Deferred();
+				webs.renderedModulesPromises.push(deferredLoad.promise());
+				require(['internal/sitebuilder/common/ModuleClassLoader'], function(mcl){
+					mcl.create('button', {data: {"html":"<span style=\"color: rgb(0, 0, 0); font-size: 24px;\" class=\"wz-bold\">Mrs. Genson<\/span>","link":null,"bgcolor":"#2a8fbd","align":"center","linkInfo":{"linkType":"website","linkUrl":null,"newWindow":false,"tab":"email","email":"gensn@elmls.net"},"icon":{"enable":false,"set":null,"slug":null,"position":"left","style":null},"_id":"55d5fcf9b4ed7b513502e66c","_captchaPublicKey":"6Le3aDEUAAAAAMNRsdkVVxpJA05exOZVTuLEqM5u","_renderCaptcha":true,"_site":{"id":126529480}}, container: $('#webs-bin-55d5fcf9b4ed7b513502e66c > .webs-bin-wrap > .webs-container')}).done(function(m){
+						m.oneLoaded();
+						deferredLoad.resolve();
+					});
+				});
+			});
+		</script>
+</div><div class="webs-parent webs-parent-5 webs-col" style="width: 194px;">
+<div class="webs-bin" id="webs-bin-57c815e1cffa31cd5f0ea7c2">
+<div class="webs-bin-wrap">
+<div class="webs-container webs-module-button  w-button-sb2_default w-button-default">
+<div class="w-button-container webs-align-left">
+<div class="w-button-align webs-align-left">
+<a class="w-button " style="background-color: #2a8fbd" href="mailto:davin@elmwoodschools.org">
+<div class="w-button-inner">
+<div class="w-button-text-wrapper">
+<div class="w-button-text"><span class="wz-bold" style="color: rgb(0, 0, 0); font-size: 24px;">Mr. Davis</span><div style="color: rgb(51, 51, 51);"><span class="wz-bold" style="color: rgb(0, 0, 0); font-size: 14px;">Guidance Counselor</span></div><div><span class="wz-bold" style="color: rgb(51, 51, 51);"><span class="wz-bold" style="color: rgb(0, 0, 0); font-size: 14px;">Progress Book</span></span></div></div>
+</div>
+</div>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+			require(['jquery'], function($){
+				var deferredLoad = $.Deferred();
+				webs.renderedModulesPromises.push(deferredLoad.promise());
+				require(['internal/sitebuilder/common/ModuleClassLoader'], function(mcl){
+					mcl.create('button', {data: {"html":"<span class=\"wz-bold\" style=\"color: rgb(0, 0, 0); font-size: 24px;\">Mr. Davis<\/span><div style=\"color: rgb(51, 51, 51);\"><span class=\"wz-bold\" style=\"color: rgb(0, 0, 0); font-size: 14px;\">Guidance Counselor<\/span><\/div><div><span class=\"wz-bold\" style=\"color: rgb(51, 51, 51);\"><span class=\"wz-bold\" style=\"color: rgb(0, 0, 0); font-size: 14px;\">Progress Book<\/span><\/span><\/div>","link":null,"bgcolor":"#2a8fbd","align":"left","linkInfo":{"linkType":"website","linkUrl":null,"newWindow":false,"tab":"email","email":"davin@elmwoodschools.org"},"icon":{"enable":false,"set":null,"slug":null,"position":"left","style":null},"_id":"57c815e1cffa31cd5f0ea7c2","_captchaPublicKey":"6Le3aDEUAAAAAMNRsdkVVxpJA05exOZVTuLEqM5u","_renderCaptcha":true,"_site":{"id":126529480}}, container: $('#webs-bin-57c815e1cffa31cd5f0ea7c2 > .webs-bin-wrap > .webs-container')}).done(function(m){
+						m.oneLoaded();
+						deferredLoad.resolve();
+					});
+				});
+			});
+		</script>
+</div></div></div></div>
+<div class="webs-bin" id="webs-bin-5421f5fcd3c6bd194c229159">
+<div class="webs-bin-wrap">
+<div class="webs-container webs-module-button  w-button-sb2_default w-button-default">
+<div class="w-button-container webs-align-center">
+<div class="w-button-align webs-align-center">
+<a class="w-button " style="background-color: #f6e024" href="https://pa.noeca.org/">
+<div class="w-button-inner">
+<div class="w-button-text-wrapper">
+<div class="w-button-text"><span class="wz-bold" style="color: rgb(0, 0, 0);">Progress Book Link</span></div>
+</div>
+</div>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+			require(['jquery'], function($){
+				var deferredLoad = $.Deferred();
+				webs.renderedModulesPromises.push(deferredLoad.promise());
+				require(['internal/sitebuilder/common/ModuleClassLoader'], function(mcl){
+					mcl.create('button', {data: {"html":"<span class=\"wz-bold\" style=\"color: rgb(0, 0, 0);\">Progress Book Link<\/span>","link":null,"bgcolor":"#f6e024","align":"center","linkInfo":{"linkType":"website","linkUrl":null,"newWindow":false,"tab":"webpage","url":"https://pa.noeca.org/"},"icon":{"enable":false,"set":null,"slug":null,"position":"left","style":null},"_id":"5421f5fcd3c6bd194c229159","_captchaPublicKey":"6Le3aDEUAAAAAMNRsdkVVxpJA05exOZVTuLEqM5u","_renderCaptcha":true,"_site":{"id":126529480}}, container: $('#webs-bin-5421f5fcd3c6bd194c229159 > .webs-bin-wrap > .webs-container')}).done(function(m){
+						m.oneLoaded();
+						deferredLoad.resolve();
+					});
+				});
+			});
+		</script>
+</div></div></section>
+</div>
+</div>
+</div>
+<div id="fw-sidebar">
+<div id="fw-sidebarbegin"></div>
+<div id="fw-sidebarend"></div>
+</div>
+<div class="clears">
+</div>
+</div>
+<div id="fw-footer">
+<p id="fw-foottext" class="fw-footertext">
+<div class="webs-content webs-footer" data-role="webs-footer" id="537e56600cf20d2f546ca024"><div class="webs-parent webs-parent-0"><div class="webs-parent webs-parent-1 webs-col"></div></div></div>
+</p>
+</div>
+</div>
+<script data-keep-for-mobile='1'>webs = window.webs || {}; webs.stats = {"siteId":"126529480","pageId":"331202916","pageTitle":"Home","parentPageId":"","collectorUrl":"https://statscollector.digital.vistaprint.com/record","premium":true,"builderType":"SB_3"};</script><script data-keep-for-mobile='2' async src='https://static.websimages.com/active-static/target/stats/collector.js'></script><script type="text/javascript">(function() {var ga = document.createElement("script"); ga.type = "text/javascript"; ga.async = true;ga.src = ("https:" == document.location.protocol ? "https://ssl" : "http://www") + ".google-analytics.com/ga.js";var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(ga, s);})();</script>
+</body>
 </html>
