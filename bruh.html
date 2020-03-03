@@ -1,1 +1,63 @@
 
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Scratch Notifier</title>
+  <meta name="Description" content="Get browser notifications when you get a new message on Scratch.">
+  <meta name="Author" content="World_Languages">
+  <meta charset="utf-8">
+  <script>
+  if(localStorage.getItem("scratchNotifier")) {
+    window.location.href = "/";
+  }
+  </script>
+  <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+  <script src="/minjs/sweetalert2.all.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <style>
+  html {
+  	font-size: 2.5vh;
+  }
+  body {
+    font-family: "Helvetica Neue", sans-serif;
+    font-size: 1rem;
+  }
+  #content {
+    text-align: center;
+    margin-top: 2.5vh;
+  }
+  .page-header {
+    font-size: 3rem;
+  }
+  .btn {
+    font-size: 1.5rem;
+  }
+  </style>
+  <script src="about.js"></script>
+</head>
+
+<body>
+  <div id="content" class="container">
+  <h1 class="page-header"><img src="/images/logo.png" class="title-icons" style="height: 3rem;vertical-align: middle;"> Scratch Notifier v3</h1>
+  <p>Get notified when you get new Scratch messages.<br>Join over 200 Scratchers that use Scratch Notifier daily!</p>
+  <br>
+  <button type="button" class="btn btn-success btn-lg" onclick="askNotificationPermission()">Let's go!</button>
+  <br><br><br><br>
+  <h2>About Scratch Notifier</h2>
+  By using SN, you'll be able to:
+  <br><b>-</b> Get instant notifications when you get new messages in your Scratch account.
+  <br><b>-</b> Set alt (secondary) Scratch accounts and get notified when they get new messages.
+  <br><b>-</b> Disable and enable new message notifications whenever you want.
+  <br><br>
+  Scratch Notifier was developed by <a href="https://scratch.mit.edu/users/World_Languages">@World_Languages</a>.
+  <br>By Scratchers, for Scratchers :)
+  <br>Free, no ads, open source.
+  <br><br>Use an Android device? Get notifications there too: m.scratchnotifier.cf
+</div>
+</body>
+
+</html>
