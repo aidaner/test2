@@ -1,160 +1,77 @@
 
 <!DOCTYPE html>
-<html>
-<head>
-<title>Scratch Notifier</title>
-<meta name="Description" content="Get browser notifications when you get new messages on Scratch.">
-<meta name="Author" content="World_Languages">
-<meta charset="utf-8">
-<script src="/cdn-cgi/apps/head/Ko3M6yhNP1bYIEQ7OfjdDrn0_qE.js"></script><script>
-    if(!localStorage.getItem("scratchNotifier") && !localStorage.getItem("username")) {
-    window.location.href = "/test2/bruh.html";
-  }
-  </script>
-<link rel="shortcut icon" href="images/logo.png" type="image/x-icon">
-<script src="minjs/sweetalert2.all.min.js"></script>
-<script src="index.js"></script>
-<script src="minjs/odometer.min.js"></script>
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<script async src="minjs/favico-0.3.10.min.js"></script>
-<link href="css/odometer.css" rel="stylesheet">
-<link rel="stylesheet" href="css/index.css">
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-92535085-5"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'UA-92535085-5');
-  </script>
-<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js"></script>
-<script>
-    var OneSignal = window.OneSignal || [];
-    OneSignal.push(function() {
-      OneSignal.init({
-        appId: "1c0a492d-2d86-4ae7-afc5-47e8b330ad6f",
-        autoRegister: false,
-        notifyButton: {
-          enable: false,
-        },
-        welcomeNotification: {
-          disable: true
-        },
-      });
-      OneSignal.registerForPushNotifications();
-    });
-  </script>
-</head>
-<body onload="try{main();}catch(err){alert('Sorry, something went wrong:\n' + err);}" style="display: none;">
-<div id="sn-title">
-<div class="title-text"><img src="/images/logo.png" class="title-icons"> Scratch Notifier</div>
-</div>
-<div id="scratch-notifier" ondblclick="setTimeout(function(){if(doubleClick) {window.getSelection().removeAllRanges(); openScratch('/messages');} else doubleClick = true;}, 50);">
-<div id="profile" ondblclick="doubleClick = false;">
-<table class="profile-table">
-<tbody>
-<tr>
-<td>
-<img id="profile-pic" title="Open profile in new tab" alt="" onclick="window.open('https://scratch.mit.edu/users/' + document.getElementById('username').innerText);"></td>
-<td><a id="username" title="Open profile in new tab" onclick="window.open('https://scratch.mit.edu/users/' + this.innerText);">username</a>
-<hr class="username-border">
-<a class="link-under-username" onclick="changeUsernameAlert();"><i class="material-icons">edit</i> Change username</a> | <a class="link-under-username" onclick="settings();"><i class="material-icons">settings</i>
-Settings</a>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div id="alts" ondblclick="doubleClick = false;">
-<table id="alts-table">
-<tbody>
-<tr>
-<td>
-<div class="alt-row" data-id="0" data-not-last="">
-<img class="alt-profile-pic" onclick="window.open('https://scratch.mit.edu/users/' + document.getElementsByClassName('alt')[this.parentNode.getAttribute('data-id')].innerText);">
-<a class="alt" title="Open profile in new tab" onclick="window.open('https://scratch.mit.edu/users/'+this.innerText);">alt</a>
-<span class="alt-settings">
-<i class="material-icons alt-settings-icons" title="Edit alt account username" onclick="editAltUsernameAlert(Number(this.parentElement.parentElement.getAttribute('data-id')));">edit</i>
-<i class="material-icons alt-settings-icons" title="Switch with main account" onclick="switchAlt(Number(this.parentElement.parentElement.getAttribute('data-id')));">compare_arrows</i>
-<i class="material-icons alt-settings-icons alt-bell" title="Enable/disable new message notifications for this account" onclick="altNotificationChange(Number(this.parentElement.parentElement.getAttribute('data-id')));"></i>
-<i class="material-icons alt-settings-icons" title="Delete alt" onclick="deleteAlt(Number(this.parentElement.parentElement.getAttribute('data-id')));">delete</i>
-</span>
-<span class="alt-msg-count odometer">0</span>
-</div>
-<div class="alt-row" data-id="1" data-not-last="">
-<img class="alt-profile-pic" onclick="window.open('https://scratch.mit.edu/users/' + document.getElementsByClassName('alt')[this.parentNode.getAttribute('data-id')].innerText);">
-<a class="alt" title="Open profile in new tab" onclick="window.open('https://scratch.mit.edu/users/'+this.innerText);">alt</a>
-<span class="alt-settings">
-<i class="material-icons alt-settings-icons" title="Edit alt account username" onclick="editAltUsernameAlert(Number(this.parentElement.parentElement.getAttribute('data-id')));">edit</i>
-<i class="material-icons alt-settings-icons" title="Switch with main account" onclick="switchAlt(Number(this.parentElement.parentElement.getAttribute('data-id')));">compare_arrows</i>
-<i class="material-icons alt-settings-icons alt-bell" title="Enable/disable new message notifications for this account" onclick="altNotificationChange(Number(this.parentElement.parentElement.getAttribute('data-id')));"></i>
-<i class="material-icons alt-settings-icons" title="Delete alt" onclick="deleteAlt(Number(this.parentElement.parentElement.getAttribute('data-id')));">delete</i>
-</span>
-<span class="alt-msg-count odometer">0</span>
-</div>
-<div class="alt-row" data-id="2">
-<img class="alt-profile-pic" onclick="window.open('https://scratch.mit.edu/users/' + document.getElementsByClassName('alt')[this.parentNode.getAttribute('data-id')].innerText);">
-<a class="alt" title="Open profile in new tab" onclick="window.open('https://scratch.mit.edu/users/'+this.innerText);">alt</a>
-<span class="alt-settings">
-<i class="material-icons alt-settings-icons" title="Edit alt account username" onclick="editAltUsernameAlert(Number(this.parentElement.parentElement.getAttribute('data-id')));">edit</i>
-<i class="material-icons alt-settings-icons" title="Switch with main account" onclick="switchAlt(Number(this.parentElement.parentElement.getAttribute('data-id')));">compare_arrows</i>
-<i class="material-icons alt-settings-icons alt-bell" title="Enable/disable new message notifications for this account" onclick="altNotificationChange(Number(this.parentElement.parentElement.getAttribute('data-id')));"></i>
-<i class="material-icons alt-settings-icons" title="Delete alt" onclick="deleteAlt(Number(this.parentElement.parentElement.getAttribute('data-id')));">delete</i>
-</span>
-<span class="alt-msg-count odometer">0</span>
-</div>
-<center><a id="add-alt" onclick="addAltAlert();"><i class="material-icons">add_circle</i> Add alt account</a></center>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div id="bell" ondblclick="doubleClick = false; window.getSelection().removeAllRanges();" title="Enable/disable all notifications (new messages and online friends)"><i class="material-icons" id="bell-icon" onclick="bellClickActions[this.innerText]();">notifications_on</i></div>
-<div id="msg-count" class="odometer">0</div>
-<div id="footer" ondblclick="doubleClick = false;">
-<div id="footer-content">
-<span id="footer-left">Made by <a class="footer-link" href="https://scratch.mit.edu/users/World_Languages/" target="_blank">World <img style="height:1rem;" src="https://cdn2.scratch.mit.edu/get_image/user/4648559_100x100.png">
-Languages</a> with ❤️</span>
-<span id="footer-right"><a class="footer-link" onclick="swal({title: 'Privacy', html: privacy, confirmButtonText: 'Close'})">Privacy</a> | <a class="footer-link" href="https://github.com/WorldLanguages/ScratchNotifier.cf" target="_blank">GitHub repo</a> | <a class="footer-link" href="https://scratch.mit.edu/users/World_Languages/#comments" target="_blank">Send feedback</a></span>
-</div>
-</div>
-</div>
-<div id="notifier-settings" style="display: none;">
-
-<div class="setting">
-Play sound on notifications:
-<select id="sfx">
-<option value="none">None</option>
-<option value="system">System default</option>
-<option value="Snapchat">Snapchat</option>
-<option value="Chord">Chord</option>
-<option value="Ding">Ding</option>
-<option value="Ding but it's Mario">Ding but it's Mario</option>
-<option value="Marimba">Marimba</option>
-<option value="Oh oh">Oh oh</option>
-<option value="Popcorn">Popcorn</option>
-</select>
-</div>
-<br>
-<div class="setting">
-Automatically close notifications:
-<select id="close-notifications">
-<option value="0">Keep open as long as possible</option>
-<option value="10">After 10 seconds</option>
-<option value="30">After 30 seconds</option>
-</select>
-</div>
-<br>
-<div class="setting">
-Background:
-<select id="background-setting">
-<option value="none">None (solid blue)</option>
-<option value="random">Random HD background</option>
-<option value="custom">Custom uploaded background</option>
-</select>
-<input id="bg-upload" type="file" accept="image/*" onchange="bgUploadOnChange()" style="display: none;">
-</div>
-<br>
-Changes are saved automatically
-</div>
-</body>
+<!-- Copyright (c) 2013-19 XtraMath. All rights reserved.-->
+<html lang="en">
+  <head>
+    <title>XtraMath</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="msapplication-config" content="none">
+    <link rel="shortcut icon" type="image/x-icon" href="https://cdn0.xtramath.org/images/icons/favicon.ico">
+    <link rel="apple-touch-icon" href="https://cdn0.xtramath.org/images/icons/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="https://cdn0.xtramath.org/images/icons/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="https://cdn0.xtramath.org/images/icons/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="https://cdn0.xtramath.org/images/icons/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://cdn0.xtramath.org/images/icons/apple-touch-icon-180x180.png">
+    <link rel="alternate" hreflang="de" href="https://de.xtramath.org">
+    <link rel="alternate" hreflang="el" href="https://el.xtramath.org">
+    <link rel="alternate" hreflang="en" href="https://xtramath.org">
+    <link rel="alternate" hreflang="es" href="https://es.xtramath.org">
+    <link rel="alternate" hreflang="es-es" href="https://es-es.xtramath.org">
+    <link rel="alternate" hreflang="fr" href="https://fr.xtramath.org">
+    <link rel="alternate" hreflang="it" href="https://it.xtramath.org">
+    <link rel="alternate" hreflang="ja" href="https://ja.xtramath.org">
+    <link rel="alternate" hreflang="ko" href="https://ko.xtramath.org">
+    <link rel="alternate" hreflang="nl" href="https://nl.xtramath.org">
+    <link rel="alternate" hreflang="pt-br" href="https://pt-br.xtramath.org">
+    <link rel="alternate" hreflang="ru" href="https://ru.xtramath.org">
+    <meta name="og:title" content="XtraMath - 10 minutes a day for math fact fluency">
+    <meta name="description" content="XtraMath is a free program that helps students master addition, subtraction, multiplication, and division facts.">
+    <meta property="og:description" content="XtraMath is a free program that helps students master addition, subtraction, multiplication, and division facts.">
+    <meta property="og:image" content="https://cdn0.xtramath.org/ogp-graphic-300x300.png">
+    <meta name="viewport" content="initial-scale=1, width=device-width">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' *.xtramath.org; script-src 'self' cdn0.xtramath.org 'unsafe-eval'; style-src 'self' cdn0.xtramath.org 'unsafe-inline'; media-src cdn0.xtramath.org; img-src 'self' cdn0.xtramath.org data:">
+    <link rel="stylesheet" type="text/css" media="all" href="https://cdn0.xtramath.org/stylesheets/style-5933b9b.css">
+  </head>
+  <!-- Copyright (c) 2016-19 XtraMath. All rights reserved.-->
+  <!-- LATER: get these snippets out of JS rather than rendering them and showing them conditionally?-->
+  <body>
+    <div class="ui-page ui-page-active woodgrain home" id="stubLoader" style="height: 100%">
+        <div class="webHeaderBg"></div>
+        <div class="webHeader xm-header" data-update-page-padding="false"><a class="logoContainer" href="#/home/index"><img class="logo" src="https://cdn0.xtramath.org/images/en/logo-white.svg"></a>
+          <div class="nav">
+          </div>
+        </div>
+      <div id="stubSpinner" style="display: none;"><img src="https://cdn0.xtramath.org/images/spinner.gif"></div>
+      <noscript>
+        <div class="containingPaper" style="height: auto;">
+          <h1>JavaScript disabled</h1>
+          <p>Please enable JavaScript to use XtraMath.</p>
+        </div>
+      </noscript>
+      <div id="stubProgress" style="display: none;">
+        <div id="scriptsProgress"><span>Loading scripts -&nbsp;</span><span id="scriptsPercentage">0</span><span>%</span></div>
+        <div id="pagesProgress"><span>Loading pages -&nbsp;</span><span id="pagesPercentage">0</span><span>%</span></div>
+      </div>
+      <div class="containingPaper" id="stubErrorContainer" style="display: none; height: auto;">
+        <h1 class="offline" style="display: none;">Disconnected</h1>
+        <h1 class="connectionFailed" style="display: none;">Unable to connect</h1>
+        <h1 class="loadFailed" style="display: none;">Client load failed</h1>
+        <p><span class="offline" style="display: none;">You are not connected to the Internet. Please connect and <a class="reload" style="cursor: pointer;">refresh</a> this page.</span><span class="connectionFailed" style="display: none;">Cannot connect to xtramath.org. You may not be connected to the Internet. Ensure that you are connected by browsing to other websites, then return here and refresh this page. If you are able to reach other websites, but unable to connect to XtraMath, email <a href="mailto:erika@xtramath.org">erika@xtramath.org</a>. Please paste the following information into your message.</span><span class="loadFailed" style="display: none;">Could not load the XtraMath client. Please <a class="reload" style="cursor: pointer;">refresh</a> this page. If you continue to experience difficulties, email <a href="mailto:erika@xtramath.org">erika@xtramath.org</a>. Paste the following information into your message.</span></p>
+        <div id="supportInfo" style="display: none;">
+          <div id="clientError" style="display: none;">
+            <pre>Error details:</pre>
+            <pre id="stubError">{{reason}}</pre>
+          </div>
+          <div id="xhrError" style="display: none;">
+            <pre>XHR details:</pre>
+            <pre id="xhrStatus">{{status}}</pre>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- - NOTE: script tags at the end of body so they don't block loading of stub image elements on slow connections.-->
+    <script src="https://cdn0.xtramath.org/javascripts/config-501b0c5.js"></script>
+    <script src="https://cdn0.xtramath.org/javascripts/stub-loader-a34d599.js"></script>
+  </body>
 </html>
